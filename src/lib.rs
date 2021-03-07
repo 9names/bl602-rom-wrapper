@@ -1,6 +1,7 @@
 #![allow(non_upper_case_globals)]
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
+#![no_std]
 
 mod rom_lookup;
 use rom_lookup::{rom_lookup, RomIndex};
