@@ -6,7 +6,7 @@
 mod rom_lookup;
 use rom_lookup::{rom_lookup, RomIndex};
 
-mod sflash {
+pub mod sflash {
     use super::*;
     pub const BL_Err_Type_SUCCESS: BL_Err_Type = 0;
     pub const BL_Err_Type_ERROR: BL_Err_Type = 1;
