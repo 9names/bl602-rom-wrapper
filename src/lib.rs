@@ -417,7 +417,7 @@ pub mod sflash {
             core::mem::transmute::<
                 *const (),
                 extern "C" fn(*mut SPI_Flash_Cfg_Type, u32, u32) -> BL_Err_Type,
-            >(rom_lookup(RomIndex::SFlash_Blk64_Erase))
+            >(rom_lookup(RomIndex::SFlash_Erase))
         };
         romdriver_func(flashCfg, startaddr, endaddr)
     }
