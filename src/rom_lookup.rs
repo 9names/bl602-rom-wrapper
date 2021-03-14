@@ -192,9 +192,8 @@ pub enum RomIndex {
 }
 
 pub fn rom_lookup(index: RomIndex) -> *const () {
-    let rom_function_table_base = (0x2101_0800) as *mut usize;
-    let rom_function_table_index = unsafe { rom_function_table_base.add(index as usize) };
-    let rom_function_addr = unsafe { rom_function_table_index.read_volatile() };
+    let rom_function_table_index = ROM_APITABLE_ADDR + (index as usize * 4);
+    let rom_function_addr = unsafe { (rom_function_table_index as *mut usize).read_volatile() };
     rom_function_addr as *const ()
 }
 
