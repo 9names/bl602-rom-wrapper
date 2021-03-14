@@ -112,7 +112,7 @@ pub mod sflash {
 
     #[doc = "  @brief Serial flash configuration structure type definition"]
     #[repr(C, packed)]
-    #[derive(Debug, Copy, Clone)]
+    #[derive(Debug, Copy, Clone, Default)]
     pub struct SPI_Flash_Cfg_Type {
         #[doc = "< Serail flash interface mode,bit0-3:IF mode,bit4:unwrap"]
         pub ioMode: u8,
@@ -259,6 +259,7 @@ pub mod sflash {
         #[doc = "< QE set data"]
         pub qeData: u8,
     }
+
     #[doc = "  @brief Serail flash controller configuration structure type definition"]
     #[repr(C)]
     #[derive(Debug, Copy, Clone)]
@@ -675,14 +676,13 @@ pub mod sflash {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_add() {
-        let mut buffer: [u8;20] = [0;20];
+        let mut buffer: [u8; 20] = [0; 20];
         sflash::SFlash_GetDeviceId(buffer.as_mut_ptr());
     }
 }

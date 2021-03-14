@@ -1,10 +1,14 @@
+#![allow(non_upper_case_globals)]
+#![allow(non_camel_case_types)]
+#![allow(non_snake_case)]
+
 // use num_enum::IntoPrimitive;
-
+#[allow(dead_code)]
 pub type ROM_API_INDEX_e = usize;
-
+#[allow(dead_code)]
 pub const ROM_APITABLE_ADDR: usize = 0x2101_0800;
 
-// #[derive(IntoPrimitive)]
+#[allow(dead_code)]
 #[repr(usize)]
 pub enum RomIndex {
     VERSION = 0,
@@ -194,6 +198,7 @@ pub fn rom_lookup(index: RomIndex) -> *const () {
     rom_function_addr as *const ()
 }
 
+#[allow(dead_code)]
 fn pds_power_on_pll(xtal_src: u32) -> usize {
     let romdriver_pds_power_on_pll = unsafe {
         core::mem::transmute::<*const (), extern "C" fn(usize) -> usize>(rom_lookup(
