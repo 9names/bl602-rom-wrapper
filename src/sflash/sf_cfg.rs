@@ -5,16 +5,6 @@ use crate::sflash::SF_Ctrl_Mode_Type;
 use crate::sflash::BL_Err_Type;
 use crate::sflash::SF_Ctrl_Owner_Type;
 
-// extern "C" {
-//     pub fn SF_Cfg_Flash_Identify(
-//         callFromFlash: u8,
-//         autoScan: u32,
-//         flashPinCfg: u32,
-//         restoreDefault: u8,
-//         pFlashCfg: *mut SPI_Flash_Cfg_Type,
-//     ) -> u32;
-// }
-
 pub fn SF_Cfg_Flash_Identify(
     callFromFlash: u8,
     autoScan: u32,
