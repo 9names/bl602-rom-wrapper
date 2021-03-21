@@ -27,31 +27,20 @@ pub fn SF_Cfg_Flash_Identify(
     )
 }
 
-pub fn SF_Cfg_Init_Flash_Gpio(
-    flashPinCfg: u8, restoreDefault: u8
-) {
+pub fn SF_Cfg_Init_Flash_Gpio(flashPinCfg: u8, restoreDefault: u8) {
     let romdriver_func = unsafe {
-        core::mem::transmute::<
-            *const (),
-            extern "C" fn(u8, u8),
-        >(rom_lookup(RomIndex::SF_Cfg_Init_Flash_Gpio))
+        core::mem::transmute::<*const (), extern "C" fn(u8, u8)>(rom_lookup(
+            RomIndex::SF_Cfg_Init_Flash_Gpio,
+        ))
     };
-    romdriver_func(
-        flashPinCfg,
-        restoreDefault,
-    )
+    romdriver_func(flashPinCfg, restoreDefault)
 }
 
-pub fn SF_Ctrl_Set_Owner(
-    owner: SF_Ctrl_Owner_Type,
-) {
+pub fn SF_Ctrl_Set_Owner(owner: SF_Ctrl_Owner_Type) {
     let romdriver_func = unsafe {
-        core::mem::transmute::<
-            *const (),
-            extern "C" fn(SF_Ctrl_Owner_Type),
-        >(rom_lookup(RomIndex::SF_Ctrl_Set_Owner))
+        core::mem::transmute::<*const (), extern "C" fn(SF_Ctrl_Owner_Type)>(rom_lookup(
+            RomIndex::SF_Ctrl_Set_Owner,
+        ))
     };
-    romdriver_func(
-        owner
-    )
+    romdriver_func(owner)
 }
