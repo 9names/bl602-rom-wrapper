@@ -191,6 +191,7 @@ pub enum RomIndex {
     FUNC_EMPTY_END = 511,
 }
 
+#[inline(always)]
 pub fn rom_lookup(index: RomIndex) -> *const () {
     let rom_function_table_index = ROM_APITABLE_ADDR + (index as usize * 4);
     let rom_function_addr = unsafe { (rom_function_table_index as *mut usize).read_volatile() };

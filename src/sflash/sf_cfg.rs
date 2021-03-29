@@ -5,6 +5,7 @@ use crate::sflash::SF_Ctrl_Mode_Type;
 use crate::sflash::BL_Err_Type;
 use crate::sflash::SF_Ctrl_Owner_Type;
 
+#[inline(always)]
 pub fn SF_Cfg_Flash_Identify(
     callFromFlash: u8,
     autoScan: u32,
@@ -27,6 +28,7 @@ pub fn SF_Cfg_Flash_Identify(
     )
 }
 
+#[inline(always)]
 pub fn SF_Cfg_Init_Flash_Gpio(flashPinCfg: u8, restoreDefault: u8) {
     let romdriver_func = unsafe {
         core::mem::transmute::<*const (), extern "C" fn(u8, u8)>(rom_lookup(
@@ -36,6 +38,7 @@ pub fn SF_Cfg_Init_Flash_Gpio(flashPinCfg: u8, restoreDefault: u8) {
     romdriver_func(flashPinCfg, restoreDefault)
 }
 
+#[inline(always)]
 pub fn SF_Ctrl_Set_Owner(owner: SF_Ctrl_Owner_Type) {
     let romdriver_func = unsafe {
         core::mem::transmute::<*const (), extern "C" fn(SF_Ctrl_Owner_Type)>(rom_lookup(
