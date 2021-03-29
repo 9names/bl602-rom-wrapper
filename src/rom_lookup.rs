@@ -197,7 +197,7 @@ pub fn rom_lookup(index: RomIndex) -> *const () {
     rom_function_addr as *const ()
 }
 
-#[allow(dead_code)]
+#[cfg(test)]
 fn pds_power_on_pll(xtal_src: u32) -> usize {
     let romdriver_pds_power_on_pll = unsafe {
         core::mem::transmute::<*const (), extern "C" fn(usize) -> usize>(rom_lookup(
