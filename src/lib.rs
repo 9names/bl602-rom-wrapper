@@ -10,6 +10,7 @@ pub mod sflash {
     use super::*;
     pub mod flashconfig;
     pub mod sf_cfg;
+    pub mod sf_ctrl;
     pub mod xip_sflash;
     pub const BL_Err_Type_SUCCESS: BL_Err_Type = 0;
     pub const BL_Err_Type_ERROR: BL_Err_Type = 1;
