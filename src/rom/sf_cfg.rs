@@ -1,6 +1,7 @@
 use crate::rom_lookup::{rom_lookup, RomIndex};
 use crate::rom::{BL_Err_Type, SF_Ctrl_Mode_Type, SPI_Flash_Cfg_Type};
 
+#[inline(always)]
 pub fn SF_Cfg_Get_Flash_Cfg_Need_Lock(
     flashID: u32,
     pFlashCfg: *mut SPI_Flash_Cfg_Type,
@@ -13,6 +14,7 @@ pub fn SF_Cfg_Get_Flash_Cfg_Need_Lock(
     romdriver_func(flashID, pFlashCfg)
 }
 
+#[inline(always)]
 pub fn SF_Cfg_Restore_GPIO17_Fun(fun: u8) {
     let romdriver_func = unsafe {
         core::mem::transmute::<*const (), extern "C" fn(u8)>(rom_lookup(
@@ -45,6 +47,7 @@ pub fn SF_Cfg_Flash_Identify(
     )
 }
 
+#[inline(always)]
 pub fn SF_Cfg_Init_Ext_Flash_Gpio(extFlashPin: u8) {
     let romdriver_func = unsafe {
         core::mem::transmute::<*const (), extern "C" fn(u8)>(rom_lookup(
@@ -64,6 +67,7 @@ pub fn SF_Cfg_Init_Flash_Gpio(flashPinCfg: u8, restoreDefault: u8) {
     romdriver_func(flashPinCfg, restoreDefault)
 }
 
+#[inline(always)]
 pub fn SF_Cfg_Init_Internal_Flash_Gpio() {
     let romdriver_func = unsafe {
         core::mem::transmute::<*const (), extern "C" fn()>(rom_lookup(
@@ -72,6 +76,8 @@ pub fn SF_Cfg_Init_Internal_Flash_Gpio() {
     };
     romdriver_func()
 }
+
+#[inline(always)]
 pub fn SF_Cfg_Deinit_Ext_Flash_Gpio(extFlashPin: u8) {
     let romdriver_func = unsafe {
         core::mem::transmute::<*const (), extern "C" fn(u8)>(rom_lookup(
