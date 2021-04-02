@@ -6,7 +6,7 @@
 mod rom_lookup;
 use rom_lookup::{rom_lookup, RomIndex};
 
-pub mod sflash {
+pub mod rom {
     use super::*;
     pub mod flashconfig;
     pub mod sf_cfg;
