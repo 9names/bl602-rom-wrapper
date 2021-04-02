@@ -289,14 +289,3 @@ pub mod rom {
         pub oeDelay: u8,
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_add() {
-        let mut buffer: [u8; 20] = [0; 20];
-        sflash::SFlash_GetDeviceId(buffer.as_mut_ptr());
-    }
-}
