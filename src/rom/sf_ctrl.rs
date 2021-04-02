@@ -1,6 +1,6 @@
 // mod rom_lookup;
 use crate::rom_lookup::{rom_lookup, RomIndex};
-use crate::sflash::SF_Ctrl_Owner_Type;
+use crate::rom::SF_Ctrl_Owner_Type;
 
 #[inline(always)]
 pub fn SF_Ctrl_Set_Owner(owner: SF_Ctrl_Owner_Type) {

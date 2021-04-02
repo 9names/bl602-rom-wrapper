@@ -1,4 +1,4 @@
-use crate::sflash::SPI_Flash_Cfg_Type;
+use crate::rom::SPI_Flash_Cfg_Type;
 
 #[allow(dead_code)]
 pub fn winbond_80_dv_cfg() -> SPI_Flash_Cfg_Type {

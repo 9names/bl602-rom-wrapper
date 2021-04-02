@@ -1,6 +1,6 @@
 use crate::rom_lookup::{rom_lookup, RomIndex};
-use crate::sflash::BL_Err_Type;
-use crate::sflash::SPI_Flash_Cfg_Type;
+use crate::rom::BL_Err_Type;
+use crate::rom::SPI_Flash_Cfg_Type;
 
 pub fn XIP_SFlash_State_Save(pFlashCfg: *mut SPI_Flash_Cfg_Type, offset: *mut u32) -> BL_Err_Type {
     let romdriver_func = unsafe {
