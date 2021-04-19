@@ -1,8 +1,9 @@
-use crate::rom_lookup::{rom_lookup, RomIndex};
 use crate::rom::BL_Err_Type;
 use crate::rom::SPI_Flash_Cfg_Type;
+use crate::rom_lookup::{rom_lookup, RomIndex};
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Save flash controller state
  *
  * `pFlashCfg` - Flash config pointer
@@ -23,7 +24,8 @@ pub fn XIP_SFlash_State_Save(pFlashCfg: *mut SPI_Flash_Cfg_Type, offset: *mut u3
     romdriver_func(pFlashCfg, offset)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Restore flash controller state
  *
  * `pFlashCfg` - Flash config pointer
@@ -43,7 +45,8 @@ pub fn XIP_SFlash_State_Restore(pFlashCfg: *mut SPI_Flash_Cfg_Type, offset: u32)
     romdriver_func(pFlashCfg, offset)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Erase flash one region
  *
  * `pFlashCfg` - Flash config pointer
@@ -70,7 +73,8 @@ pub fn XIP_SFlash_Erase_Need_Lock(
     romdriver_func(pFlashCfg, startaddr, endaddr)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Program flash one region
  *
  * `pFlashCfg` - Flash config pointer
@@ -100,7 +104,8 @@ pub fn XIP_SFlash_Write_Need_Lock(
     romdriver_func(pFlashCfg, addr, data, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Read data from flash
  *
  * `pFlashCfg` - Flash config pointer
@@ -130,7 +135,8 @@ pub fn XIP_SFlash_Read_Need_Lock(
     romdriver_func(pFlashCfg, addr, data, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get Flash Jedec ID
  *
  * `pFlashCfg` - Flash config pointer
@@ -154,7 +160,8 @@ pub fn XIP_SFlash_GetJedecId_Need_Lock(
     romdriver_func(pFlashCfg, data)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get Flash Device ID
  *
  * `pFlashCfg` - Flash config pointer
@@ -178,7 +185,8 @@ pub fn XIP_SFlash_GetDeviceId_Need_Lock(
     romdriver_func(pFlashCfg, data)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get Flash Unique ID
  *
  * `pFlashCfg` - Flash config pointer
@@ -205,7 +213,8 @@ pub fn XIP_SFlash_GetUniqueId_Need_Lock(
     romdriver_func(pFlashCfg, data, idLen)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Read data from flash via XIP
  *
  * `addr` - flash read start address
@@ -227,8 +236,8 @@ pub fn XIP_SFlash_Read_Via_Cache_Need_Lock(addr: u32, data: *mut u8, len: u32) -
     romdriver_func(addr, data, len)
 }
 
-
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Read data from flash with lock
  *
  * `pFlashCfg` - Flash config pointer
@@ -258,7 +267,8 @@ pub fn XIP_SFlash_Read_With_Lock(
     romdriver_func(pFlashCfg, addr, dst, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Program flash one region with lock
  *
  * `pFlashCfg` - Flash config pointer
@@ -288,7 +298,8 @@ pub fn XIP_SFlash_Write_With_Lock(
     romdriver_func(pFlashCfg, addr, src, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Erase flash one region with lock
  *
  * `pFlashCfg` - Flash config pointer
@@ -311,7 +322,8 @@ pub fn XIP_SFlash_Erase_With_Lock(pFlashCfg: *mut SPI_Flash_Cfg_Type, addr: u32,
     romdriver_func(pFlashCfg, addr, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * XIP SFlash option save
  *
  * `aesEnable` - AES enable status pointer
@@ -327,7 +339,8 @@ pub fn XIP_SFlash_Opt_Enter(aesEnable: *mut u8) {
     romdriver_func(aesEnable)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * XIP SFlash option restore
  *
  * `aesEnable` - AES enable status

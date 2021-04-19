@@ -1,7 +1,11 @@
+use crate::rom::{
+    BL_Err_Type, BL_Sts_Type, SF_Ctrl_Cfg_Type, SF_Ctrl_IO_Type, SF_Ctrl_Mode_Type,
+    SPI_Flash_Cfg_Type,
+};
 use crate::rom_lookup::{rom_lookup, RomIndex};
-use crate::rom::{SF_Ctrl_Cfg_Type, BL_Err_Type, BL_Sts_Type, SF_Ctrl_IO_Type, SF_Ctrl_Mode_Type, SPI_Flash_Cfg_Type};
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Init serial flash control interface
  *
  * `pSfCtrlCfg`: Serial flash controller configuration pointer
@@ -17,7 +21,8 @@ pub fn SFlash_Init(sfCtrlCfg: *const SF_Ctrl_Cfg_Type) {
     romdriver_func(sfCtrlCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Set serial flash control interface SPI or QPI mode
  *
  * `mode` - Serial flash interface mode
@@ -35,7 +40,8 @@ pub fn SFlash_SetSPIMode(mode: SF_Ctrl_Mode_Type) -> BL_Err_Type {
     romdriver_func(mode)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Read flash register
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -65,7 +71,8 @@ pub fn SFlash_Read_Reg(
     romdriver_func(flashCfg, regIndex, regValue, regLen)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Write flash register
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -95,7 +102,8 @@ pub fn SFlash_Write_Reg(
     romdriver_func(flashCfg, regIndex, regValue, regLen)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Check flash busy status
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -113,7 +121,8 @@ pub fn SFlash_Busy(flashCfg: *mut SPI_Flash_Cfg_Type) -> BL_Sts_Type {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Enable flash write function
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -131,7 +140,8 @@ pub fn SFlash_Write_Enable(flashCfg: *mut SPI_Flash_Cfg_Type) -> BL_Err_Type {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Enable flash flash controller QSPI interface
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -149,7 +159,8 @@ pub fn SFlash_Qspi_Enable(flashCfg: *mut SPI_Flash_Cfg_Type) -> BL_Err_Type {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Enable flash volatile register write enable
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -165,7 +176,8 @@ pub fn SFlash_Volatile_Reg_Write_Enable(flashCfg: *mut SPI_Flash_Cfg_Type) {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Erase flash whole chip
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -183,7 +195,8 @@ pub fn SFlash_Chip_Erase(flashCfg: *mut SPI_Flash_Cfg_Type) -> BL_Err_Type {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Erase flash one sector
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -195,15 +208,15 @@ pub fn SFlash_Chip_Erase(flashCfg: *mut SPI_Flash_Cfg_Type) -> BL_Err_Type {
 #[inline(always)]
 pub fn SFlash_Sector_Erase(flashCfg: *mut SPI_Flash_Cfg_Type, secNum: u32) -> BL_Err_Type {
     let romdriver_func = unsafe {
-        core::mem::transmute::<
-            *const (),
-            extern "C" fn(*mut SPI_Flash_Cfg_Type, u32) -> BL_Err_Type,
-        >(rom_lookup(RomIndex::SFlash_Sector_Erase))
+        core::mem::transmute::<*const (), extern "C" fn(*mut SPI_Flash_Cfg_Type, u32) -> BL_Err_Type>(
+            rom_lookup(RomIndex::SFlash_Sector_Erase),
+        )
     };
     romdriver_func(flashCfg, secNum)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Erase flash one 32K block
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -216,15 +229,15 @@ pub fn SFlash_Sector_Erase(flashCfg: *mut SPI_Flash_Cfg_Type, secNum: u32) -> BL
 #[inline(always)]
 pub fn SFlash_Blk32_Erase(flashCfg: *mut SPI_Flash_Cfg_Type, blkNum: u32) -> BL_Err_Type {
     let romdriver_func = unsafe {
-        core::mem::transmute::<
-            *const (),
-            extern "C" fn(*mut SPI_Flash_Cfg_Type, u32) -> BL_Err_Type,
-        >(rom_lookup(RomIndex::SFlash_Blk32_Erase))
+        core::mem::transmute::<*const (), extern "C" fn(*mut SPI_Flash_Cfg_Type, u32) -> BL_Err_Type>(
+            rom_lookup(RomIndex::SFlash_Blk32_Erase),
+        )
     };
     romdriver_func(flashCfg, blkNum)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Erase flash one 64K block
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -237,15 +250,15 @@ pub fn SFlash_Blk32_Erase(flashCfg: *mut SPI_Flash_Cfg_Type, blkNum: u32) -> BL_
 #[inline(always)]
 pub fn SFlash_Blk64_Erase(flashCfg: *mut SPI_Flash_Cfg_Type, blkNum: u32) -> BL_Err_Type {
     let romdriver_func = unsafe {
-        core::mem::transmute::<
-            *const (),
-            extern "C" fn(*mut SPI_Flash_Cfg_Type, u32) -> BL_Err_Type,
-        >(rom_lookup(RomIndex::SFlash_Blk64_Erase))
+        core::mem::transmute::<*const (), extern "C" fn(*mut SPI_Flash_Cfg_Type, u32) -> BL_Err_Type>(
+            rom_lookup(RomIndex::SFlash_Blk64_Erase),
+        )
     };
     romdriver_func(flashCfg, blkNum)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Erase flash one region
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -272,7 +285,8 @@ pub fn SFlash_Erase(
     romdriver_func(flashCfg, startaddr, endaddr)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Program flash one region
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -311,7 +325,8 @@ pub fn SFlash_Program(
     romdriver_func(flashCfg, ioMode, addr, data, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get flash unique ID
  *
  * `data` - data pointer to store read data
@@ -329,7 +344,8 @@ pub fn SFlash_GetUniqueId(data: *mut u8, idLen: u8) {
     romdriver_func(data, idLen)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get flash jedec ID
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -347,7 +363,8 @@ pub fn SFlash_GetJedecId(flashCfg: *mut SPI_Flash_Cfg_Type, data: *mut u8) {
     romdriver_func(flashCfg, data)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get flash device ID
  *
  * `data` - data pointer to store read data
@@ -363,21 +380,21 @@ pub fn SFlash_GetDeviceId(data: *mut u8) {
     romdriver_func(data)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Set flash power down
  *
 *******************************************************************************/
 #[inline(always)]
 pub fn SFlash_Powerdown() {
     let romdriver_func = unsafe {
-        core::mem::transmute::<*const (), extern "C" fn()>(rom_lookup(
-            RomIndex::SFlash_Powerdown,
-        ))
+        core::mem::transmute::<*const (), extern "C" fn()>(rom_lookup(RomIndex::SFlash_Powerdown))
     };
     romdriver_func()
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Release flash power down for wake up
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -393,7 +410,8 @@ pub fn SFlash_Releae_Powerdown(flashCfg: *mut SPI_Flash_Cfg_Type) {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Set flash burst wrap config
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -409,7 +427,8 @@ pub fn SFlash_SetBurstWrap(flashCfg: *mut SPI_Flash_Cfg_Type) {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Disable flash burst wrap config
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -425,7 +444,8 @@ pub fn SFlash_DisableBurstWrap(flashCfg: *mut SPI_Flash_Cfg_Type) {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Software reset flash
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -443,7 +463,8 @@ pub fn SFlash_Software_Reset(flashCfg: *mut SPI_Flash_Cfg_Type) -> BL_Err_Type {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Reset flash continous read mode
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -459,7 +480,8 @@ pub fn SFlash_Reset_Continue_Read(flashCfg: *mut SPI_Flash_Cfg_Type) {
     romdriver_func(flashCfg)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Set I/D bus read flash configuration in flash controller
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -486,19 +508,14 @@ pub fn SFlash_Set_IDbus_Cfg(
     let romdriver_func = unsafe {
         core::mem::transmute::<
             *const (),
-            extern "C" fn(
-                *mut SPI_Flash_Cfg_Type,
-                SF_Ctrl_IO_Type,
-                u8,
-                u32,
-                u32,
-            ) -> BL_Err_Type,
+            extern "C" fn(*mut SPI_Flash_Cfg_Type, SF_Ctrl_IO_Type, u8, u32, u32) -> BL_Err_Type,
         >(rom_lookup(RomIndex::SFlash_Set_IDbus_Cfg))
     };
     romdriver_func(flashCfg, ioMode, contRead, addr, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Enable I/D bus read from flash
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -525,7 +542,8 @@ pub fn SFlash_IDbus_Read_Enable(
     romdriver_func(flashCfg, ioMode, contRead)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Enable cache
  *
  * `wayDisable` - cache way disable config
@@ -543,7 +561,8 @@ pub fn SFlash_Cache_Enable_Set(wayDisable: u8) -> BL_Err_Type {
     romdriver_func(wayDisable)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Flush cache
  *
  * Returns SUCCESS or ERROR
@@ -559,7 +578,8 @@ pub fn SFlash_Cache_Flush() -> BL_Err_Type {
     romdriver_func()
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Enable cache read from flash with cache
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -589,7 +609,8 @@ pub fn SFlash_Cache_Read_Enable(
     romdriver_func(flashCfg, ioMode, contRead, wayDisable)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get cache hit count
  *
  * `hitCountLow` - hit count low 32 bits pointer
@@ -607,7 +628,8 @@ pub fn SFlash_Cache_Hit_Count_Get(hitCountLow: *mut u32, hitCountHigh: *mut u32)
     romdriver_func(hitCountLow, hitCountHigh)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Get cache miss count
  *
  * Returns Cache miss count
@@ -623,7 +645,8 @@ pub fn SFlash_Cache_Miss_Count_Get() -> u32 {
     romdriver_func()
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Disable read from flash with cache
  *
 *******************************************************************************/
@@ -637,7 +660,8 @@ pub fn SFlash_Cache_Read_Disable() {
     romdriver_func()
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Read data from flash
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -678,7 +702,8 @@ pub fn SFlash_Read(
     romdriver_func(flashCfg, ioMode, contRead, addr, data, len)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Read flash register with read command
  *
  * `flashCfg` - Serial flash parameter configuration pointer
@@ -708,7 +733,8 @@ pub fn SFlash_Read_Reg_With_Cmd(
     romdriver_func(flashCfg, readRegCmd, regValue, regLen)
 }
 
-/****************************************************************************//**
+/****************************************************************************/
+/**
  * Write flash register with write command
  *
  * `flashCfg` - Serial flash parameter configuration pointer

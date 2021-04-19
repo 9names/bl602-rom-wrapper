@@ -8,12 +8,12 @@ use rom_lookup::{rom_lookup, RomIndex};
 
 pub mod rom {
     use super::*;
+    pub mod delay;
     pub mod flashconfig;
     pub mod sf_cfg;
     pub mod sf_ctrl;
-    pub mod xip_sflash;
     pub mod sflash;
-    pub mod delay;
+    pub mod xip_sflash;
     pub const BL_Err_Type_SUCCESS: BL_Err_Type = 0;
     pub const BL_Err_Type_ERROR: BL_Err_Type = 1;
     pub const BL_Err_Type_TIMEOUT: BL_Err_Type = 2;
