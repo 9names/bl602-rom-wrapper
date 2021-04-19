@@ -13,6 +13,7 @@ pub mod rom {
     pub mod sf_ctrl;
     pub mod xip_sflash;
     pub mod sflash;
+    pub mod delay;
     pub const BL_Err_Type_SUCCESS: BL_Err_Type = 0;
     pub const BL_Err_Type_ERROR: BL_Err_Type = 1;
     pub const BL_Err_Type_TIMEOUT: BL_Err_Type = 2;
