@@ -1,3 +1,4 @@
+#![allow(clippy::upper_case_acronyms)]
 use crate::rom_lookup::{rom_lookup, RomIndex};
 
 #[allow(dead_code)]

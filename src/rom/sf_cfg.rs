@@ -1,3 +1,4 @@
+#![allow(clippy::upper_case_acronyms)]
 use crate::rom::{BL_Err_Type, SF_Ctrl_Mode_Type, SPI_Flash_Cfg_Type};
 use crate::rom_lookup::{rom_lookup, RomIndex};
 

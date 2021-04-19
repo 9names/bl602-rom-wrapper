@@ -1,3 +1,4 @@
+#![allow(clippy::upper_case_acronyms)]
 use crate::rom::SF_Ctrl_Owner_Type;
 use crate::rom_lookup::{rom_lookup, RomIndex};
 

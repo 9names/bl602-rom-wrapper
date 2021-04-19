@@ -1,3 +1,4 @@
+#![allow(clippy::upper_case_acronyms)]
 use crate::rom::{
     BL_Err_Type, BL_Sts_Type, SF_Ctrl_Cfg_Type, SF_Ctrl_IO_Type, SF_Ctrl_Mode_Type,
     SPI_Flash_Cfg_Type,
