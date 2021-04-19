@@ -7,6 +7,7 @@
 mod rom_lookup;
 
 pub mod rom {
+    pub mod cstring;
     pub mod delay;
     pub mod flashconfig;
     pub mod sf_cfg;
