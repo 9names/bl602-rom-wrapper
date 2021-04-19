@@ -4,10 +4,8 @@
 #![no_std]
 
 mod rom_lookup;
-use rom_lookup::{rom_lookup, RomIndex};
 
 pub mod rom {
-    use super::*;
     pub mod delay;
     pub mod flashconfig;
     pub mod sf_cfg;
