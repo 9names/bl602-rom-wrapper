@@ -4,7 +4,7 @@
 #![allow(clippy::upper_case_acronyms)]
 #![no_std]
 
-mod rom_lookup;
+pub mod rom_lookup;
 
 pub mod rom {
     pub mod cstring;
